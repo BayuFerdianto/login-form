@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <!-- font google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      .h__80 {
+        height: 70vh;
+      }
+      div.img-bg {
+        background-image: url("assets/img/pexels-barbara-batári-4547737.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+      div.img-mockup {
+        transition: all ease-in-out 1000ms;
+        background: black;
+        opacity: 0.5;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+      }
+      div.img-mockup::before {
+        content: "LOGO";
+        padding-top: 5px;
+        padding-left: 10px;
+        font-weight: bold;       
+        font-size: 2rem;
+        color: #fff;
+      }
+      
+      .overlay {
+        transform: translateY(13%);
+      }
+    </style>
+  </head>
+  <body>
+
+  <!-- "Main" -->
+<main>
+<div class="container-lg h-100">
+  <div class="row justify-content-center overlay h__80 shadow rounded-end" id="row">
+    <!-- Background Image -->
+    <div class="col-lg-7 p-0">
+      <div class="img-bg">
+        <div id="img-back"></div>
+      </div>
+    </div>
+    <!-- Right -->
+    <div class="col-lg-5 col-sm-12 p-3 align-self-center">
+      <button class="btn btn-secondary px-4 mt-1 me-1 position-absolute top-0 end-0 shadow-sm" id="en">EN</button>
+      <button class="d-block w-75 mx-auto mt-3 btn btn-outline-dark mb-1 shadow-sm">
+        
+        <div class="d-flex w-100 align-items-center">
+          <img src="assets/vector/google-favicon-logo.png" class="me-1 " width="25" alt="Google icon">
+          <span class="me-4 vr"></span>
+          Login with Google
+        </button>
+<button class="btn btn-primary w-75 mx-auto d-block mb-1 shadow-sm">
+  <div class="d-flex align-items-center">
+  <img src="assets/vector/facebook-icon.png" class="me-1" width="25" alt="Meta icon">
+  <span class="me-4 vr"></span>
+  Login With Meta
+  </div>
+</button>
+<button class="btn btn-dark w-75 mx-auto d-block shadow-sm">
+  <div class="d-flex align-items-center">
+    <img src="assets/vector/github-mark-logo.png" class="me-1" width="25" alt="Github icon">
+    <span class="me-4 vr"></span>
+    Login With Github
+  </div>
+</button>
+      <form class="w-75 mx-auto position-relative text-secondary">
+      <h1 class="fs-3 mb-0 mt-5 text-dark">Sign in</h1>
+      <div class="mb-3 mt-4">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control border-top-0 border-end-0 border-start-0 border-success rounded-0 border-bottom-success" style="font-family: 'Poppins';" id="email" placeholder="name@example.com" autofocus required>
+      </div>
+        <div class="mb-3 ">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control border-top-0 border-end-0 border-start-0 border-success rounded-0" id="password" required>
+        </div>
+        <span class="mb-5">Don't have a account? <a href="#" class="text-decoration-none text-primary">Sign up now.</a></span>
+        <button class="btn btn-success px-5 text-white d-block mt-2">Login</button>
+      </form>
+    </div>
+  </div>
+  
+</div>
+</main>
+  <!-- End Main" -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      const imgHover = document.querySelector("#img-back");
+      const img = document.querySelector(".img-bg");
+      const boxShadow = document.querySelector("#row");
+      const english = document.querySelector("#en");
+        img.addEventListener("mousemove", function(){
+          imgHover.classList.add("img-mockup");
+        });
+        img.addEventListener("mouseleave", function(){
+          imgHover.classList.remove("img-mockup");
+        });
+      // media min-width
+      function myFunction(x) {
+        if (x.matches) { // If media query matches
+          boxShadow.classList.add('shadow');
+          english.classList.remove('d-none');
+        } else {
+          boxShadow.classList.remove('shadow');
+          english.classList.add('d-none');
+        }
+      }
+
+      var x = window.matchMedia("(min-width: 992px)")
+      myFunction(x) // Call listener function at run time
+      x.addListener(myFunction)
+
+
+    </script>
+  </body>
+</html>
