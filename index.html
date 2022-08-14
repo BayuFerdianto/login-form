@@ -20,7 +20,11 @@
         background-repeat: no-repeat;
         width: 100%;
         height: 100%;
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
       }
       div.img-mockup {
         transition: all ease-in-out 1000ms;
@@ -42,16 +46,19 @@
       .overlay {
         transform: translateY(13%);
       }
+      .h__100 {
+        height: 100vh;
+      }
     </style>
   </head>
   <body>
 
   <!-- "Main" -->
 <main>
-<div class="container-lg h-100">
-  <div class="row justify-content-center overlay h__80 shadow rounded-end" id="row">
+<div class="container-lg h__100">
+  <div class="row justify-content-center overlay h-75 shadow rounded-end" id="row">
     <!-- Background Image -->
-    <div class="col-lg-7 p-0">
+    <div class="col-lg-7 p-0 position-relative">
       <div class="img-bg">
         <div id="img-back"></div>
       </div>
@@ -82,14 +89,14 @@
 </button>
       <form class="w-75 mx-auto position-relative text-secondary">
       <h1 class="fs-3 mb-0 mt-5 text-dark">Sign in</h1>
-      <div class="mb-3 mt-4">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control border-top-0 border-end-0 border-start-0 border-success rounded-0 border-bottom-success" style="font-family: 'Poppins';" id="email" placeholder="name@example.com" autofocus required>
+      <div class="form-floating mt-3 mb-3">
+        <input type="password" class="form-control border-top-0 border-end-0 border-start-0 border-success rounded-0" id="email" placeholder="name@example.com">
+        <label for="email">Email Address</label>
       </div>
-        <div class="mb-3 ">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control border-top-0 border-end-0 border-start-0 border-success rounded-0" id="password" required>
-        </div>
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control border-top-0 border-end-0 border-start-0 border-success rounded-0" id="password" placeholder="Password">
+        <label for="password">Password</label>
+      </div>
         <span class="mb-5">Don't have a account? <a href="#" class="text-decoration-none text-primary">Sign up now.</a></span>
         <button class="btn btn-success px-5 text-white d-block mt-2">Login</button>
       </form>
@@ -99,7 +106,6 @@
 </div>
 </main>
   <!-- End Main" -->
-    <script src="js/bootstrap.min.js"></script>
     <script>
       const imgHover = document.querySelector("#img-back");
       const img = document.querySelector(".img-bg");
@@ -125,6 +131,20 @@
       var x = window.matchMedia("(min-width: 992px)")
       myFunction(x) // Call listener function at run time
       x.addListener(myFunction)
+
+      // min height
+      function minHeightFunction(y) {
+        if (y.matches) { // If media query matches
+          boxShadow.classList.add('shadow');
+          english.classList.remove('d-none');
+        } else {
+          boxShadow.classList.remove('shadow');
+          english.classList.add('d-none');
+        }
+      }
+      var y = window.matchMedia("(min-height: 694px)")
+      minHeightFunction(y) // Call listener function at run time
+      y.addListener(minHeightFunction)
 
 
     </script>
